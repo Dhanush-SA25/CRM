@@ -11,6 +11,7 @@ from .insights import insights_bp
 from .exports import exports_bp
 from .employees import employees_bp
 from .targets import targets_bp
+from .setup import setup_bp
 
 __all__ = [
     "auth_bp",
@@ -26,4 +27,5 @@ __all__ = [
     "exports_bp",
     "employees_bp",
     "targets_bp",
+    "setup_bp",
 ]

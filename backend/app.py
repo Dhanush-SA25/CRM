@@ -25,6 +25,7 @@ from routes import (
     exports_bp,
     employees_bp,
     targets_bp,
+    setup_bp,
 )
 
 
@@ -61,6 +62,7 @@ def create_app(config_class=None):
         exports_bp,
         employees_bp,
         targets_bp,
+        setup_bp,
     ]:
         app.register_blueprint(bp)
 
