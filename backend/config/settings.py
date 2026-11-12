@@ -27,15 +27,32 @@ logger = logging.getLogger(__name__)
 # ── Helpers ──────────────────────────────────────────────────────────────
 
 def _normalize_db_url(url):
-    """Normalise a database URL for SQLAlchemy compatibility.
+    """Normalise a database URL for SQLAlchemy 2.x + psycopg3.
 
-    SQLAlchemy 2.x dropped the `postgres` dialect alias, so Render and
-    Heroku-style `postgres://` URLs must be rewritten to `postgresql://`.
+    Render and Heroku set `DATABASE_URL` with the legacy `postgres://`
+    scheme.  SQLAlchemy 2.1 defaults to the psycopg3 driver but requires
+    the dialect to be explicit (`postgresql+psycopg://`).  This function:
+
+    - Rewrites `postgres://`     → `postgresql+psycopg://`
+    - Rewrites `postgresql://`  → `postgresql+psycopg://`
+    - Leaves `postgresql+psycopg://` and `postgresql+psycopg2://` untouched
+    - Leaves `sqlite:///` untouched
     """
     if not url:
         return url
+
+    # Already has a driver suffix → don't touch it
+    if url.startswith("postgresql+"):
+        return url
+
+    # Legacy postgres:// scheme (Render / Heroku)
     if url.startswith("postgres://"):
-        return "postgresql://" + url[len("postgres://"):]
+        return "postgresql+psycopg://" + url[len("postgres://"):]
+
+    # Bare postgresql:// without a driver → add psycopg3
+    if url.startswith("postgresql://"):
+        return "postgresql+psycopg://" + url[len("postgresql://"):]
+
     return url
 
 
@@ -181,4 +198,5 @@ def get_config():
     _ResolvedConfig.__name__ = config_class.__name__
     _ResolvedConfig.__qualname__ = config_class.__qualname__
     return _ResolvedConfig
+
 
