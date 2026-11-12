@@ -1,0 +1,56 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+*.env
+!.env.example
+
+# Flask
+instance/
+*.db
+*.sqlite
+*.sqlite3
+
+# Pytest / Hypothesis
+.pytest_cache/
+.hypothesis/
+htmlcov/
+.coverage
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+*.suo
+*.user
+
+# Large data files
+*.csv
+
+# Kiro internal (keep specs but not meta/cache)
+.kiro/specs/**/*.meta.json

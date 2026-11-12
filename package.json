@@ -1,0 +1,15 @@
+{
+  "name": "smartcrm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SmartCRM full-stack CRM — root task runner",
+  "scripts": {
+    "install:frontend": "npm --prefix frontend install",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "cd backend && .venv\\Scripts\\python.exe app.py",
+    "test:frontend": "npm --prefix frontend test",
+    "test:backend": "cd backend && .venv\\Scripts\\python.exe -m pytest -q",
+    "lint": "npm --prefix frontend run lint",
+    "build": "npm --prefix frontend run build"
+  }
+}
