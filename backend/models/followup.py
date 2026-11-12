@@ -15,6 +15,9 @@ class FollowUp(db.Model):
     linked_type = db.Column(db.String(20), nullable=False)  # customer | lead
     linked_id = db.Column(db.Integer, nullable=False)
     assigned_to = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
+    assigned_employee_id = db.Column(
+        db.Integer, db.ForeignKey("employees.id"), nullable=True, index=True
+    )
     created_by = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -46,6 +49,7 @@ class FollowUp(db.Model):
             "linked_type": self.linked_type,
             "linked_id": self.linked_id,
             "assigned_to": self.assigned_to,
+            "assigned_employee_id": self.assigned_employee_id,
             "created_by": self.created_by,
             "created_at": self.created_at.isoformat(),
             "updated_at": self.updated_at.isoformat(),

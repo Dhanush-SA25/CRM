@@ -9,7 +9,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { formatCurrency } from "../../utils/formatters";
+import { formatCompactCurrency, formatCurrency } from "../../utils/formatters";
 import ChartEmpty from "./ChartEmpty";
 
 const TOOLTIP_STYLE = {
@@ -37,7 +37,7 @@ export default function RevenueTrendChart({ data = [] }) {
           tick={{ fontSize: 11, fill: "#94a3b8" }}
           axisLine={false}
           tickLine={false}
-          tickFormatter={(value) => (value >= 1000 ? `$${Math.round(value / 1000)}k` : `$${value}`)}
+          tickFormatter={formatCompactCurrency}
         />
         <YAxis
           yAxisId="deals"

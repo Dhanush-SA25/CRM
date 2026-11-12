@@ -70,7 +70,9 @@ export default function Topbar({ onMenuClick }) {
   const [notifData, setNotifData] = useState(null);
   const [notifLoading, setNotifLoading] = useState(false);
 
-  const currentLabel = ROUTE_LABELS[location.pathname] ?? "Workspace";
+  const currentLabel =
+    ROUTE_LABELS[location.pathname] ??
+    (location.pathname.startsWith("/activities/") ? "Activities" : "Workspace");
 
   // Global ⌘K / Ctrl+K shortcut for search
   useEffect(() => {

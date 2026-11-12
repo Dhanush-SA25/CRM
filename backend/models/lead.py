@@ -16,6 +16,12 @@ class Lead(db.Model):
     notes = db.Column(db.Text, nullable=True)
     score = db.Column(db.Integer, default=0)           # 0-100 lead quality score
     assigned_to = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
+    assigned_employee_id = db.Column(
+        db.Integer, db.ForeignKey("employees.id"), nullable=True, index=True
+    )
+    customer_id = db.Column(
+        db.Integer, db.ForeignKey("customers.id"), nullable=True, index=True
+    )
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -31,6 +37,8 @@ class Lead(db.Model):
             "notes": self.notes,
             "score": self.score,
             "assigned_to": self.assigned_to,
+            "assigned_employee_id": self.assigned_employee_id,
+            "customer_id": self.customer_id,
             "created_at": self.created_at.isoformat(),
             "updated_at": self.updated_at.isoformat(),
         }

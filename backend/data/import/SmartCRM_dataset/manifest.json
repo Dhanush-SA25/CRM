@@ -1,0 +1,17 @@
+{
+  "record_counts": {
+    "departments": 10,
+    "employees": 1000,
+    "customers": 500,
+    "leads": 300,
+    "deals": 200,
+    "tasks": 500,
+    "followups": 300,
+    "activities": 2000
+  },
+  "foreign_key_check_errors": 0,
+  "generated_on": "2026-11-11",
+  "data_type": "fictional synthetic test data",
+  "email_domain": "example.com",
+  "phone_fields": "blank"
+}

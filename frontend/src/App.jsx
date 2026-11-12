@@ -38,6 +38,7 @@ export default function App() {
             <Route path="followups" element={<FollowUpsPage />} />
             <Route path="tasks" element={<TasksPage />} />
             <Route path="activities" element={<ActivitiesPage />} />
+            <Route path="activities/:section" element={<ActivitiesPage />} />
 
             {/* Admin-only routes */}
             <Route element={<AdminRoute />}>

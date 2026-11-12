@@ -28,7 +28,11 @@ class Deal(db.Model):
     lost_reason = db.Column(db.String(120), nullable=True)  # populated for lost deals
     notes = db.Column(db.Text, nullable=True)
     customer_id = db.Column(db.Integer, db.ForeignKey("customers.id"), nullable=True)
+    lead_id = db.Column(db.Integer, db.ForeignKey("leads.id"), nullable=True, index=True)
     assigned_to = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
+    assigned_employee_id = db.Column(
+        db.Integer, db.ForeignKey("employees.id"), nullable=True, index=True
+    )
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -43,7 +47,9 @@ class Deal(db.Model):
             "lost_reason": self.lost_reason,
             "notes": self.notes,
             "customer_id": self.customer_id,
+            "lead_id": self.lead_id,
             "assigned_to": self.assigned_to,
+            "assigned_employee_id": self.assigned_employee_id,
             "created_at": self.created_at.isoformat(),
             "updated_at": self.updated_at.isoformat(),
         }

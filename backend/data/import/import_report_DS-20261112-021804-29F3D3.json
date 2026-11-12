@@ -1,0 +1,86 @@
+{
+  "generated_at": "2026-11-12T02:18:05",
+  "dry_run": false,
+  "batch": "DS-20261112-021804-29F3D3",
+  "data_dir": "D:\\python\\CRM\\backend\\data\\import\\SmartCRM_dataset",
+  "database": "D:\\python\\CRM\\backend\\instance\\smartcrm_dev.db",
+  "backup": "D:\\python\\CRM\\backend\\backups\\smartcrm_dev_20261112_021804.db",
+  "admin_user": {
+    "id": 1,
+    "email": "admin@smartcrm.com"
+  },
+  "modules": {
+    "departments": {
+      "rows": 10,
+      "created": 10,
+      "updated": 0,
+      "skipped": 0
+    },
+    "employees": {
+      "rows": 1000,
+      "created": 0,
+      "updated": 1000,
+      "skipped": 0
+    },
+    "customers": {
+      "rows": 500,
+      "created": 500,
+      "updated": 0,
+      "skipped": 0
+    },
+    "leads": {
+      "rows": 300,
+      "created": 300,
+      "updated": 0,
+      "skipped": 0
+    },
+    "deals": {
+      "rows": 200,
+      "created": 200,
+      "updated": 0,
+      "skipped": 0
+    },
+    "tasks": {
+      "rows": 500,
+      "created": 500,
+      "updated": 0,
+      "skipped": 0
+    },
+    "followups": {
+      "rows": 300,
+      "created": 300,
+      "updated": 0,
+      "skipped": 0
+    },
+    "activities": {
+      "rows": 2000,
+      "created": 2000,
+      "updated": 0,
+      "skipped": 0
+    }
+  },
+  "errors": [],
+  "normalisations": {
+    "lead source: Cold Call": 32,
+    "lead source: Email Campaign": 28,
+    "lead source: LinkedIn": 36,
+    "lead source: Partner": 45,
+    "lead source: Referral": 36,
+    "lead source: Social Media": 47,
+    "lead source: Trade Show": 35,
+    "lead source: Website": 41
+  },
+  "table_counts": {
+    "users": 3,
+    "departments": 10,
+    "employees": 1000,
+    "customers": 505,
+    "leads": 304,
+    "deals": 205,
+    "tasks": 501,
+    "followups": 300,
+    "activities": 2000,
+    "import_mappings": 4810
+  },
+  "foreign_key_violations": 0
+}

@@ -1,0 +1,704 @@
+{
+  "generated_at": "2026-11-12T03:01:47",
+  "database": "D:\\python\\CRM\\backend\\instance\\smartcrm_dev.db",
+  "backup": "D:\\python\\CRM\\backend\\backups\\smartcrm_dev_20261112_030055_pre_activity_fix.db",
+  "criteria": {
+    "confirmed_duplicate": [
+      "same type",
+      "same title",
+      "same description",
+      "same customer_id",
+      "same lead_id",
+      "same employee_id",
+      "same activity timestamp",
+      "same linked_type",
+      "same linked_id"
+    ],
+    "review_only": "same type/title/description/timestamp but differing relationship or employee",
+    "never_auto_delete": "same type/title/links/employee at different timestamps (legitimate repeated activity)"
+  },
+  "summary": {
+    "total_activities_before": 2000,
+    "mapped_source_activities": 2000,
+    "confirmed_duplicate_groups": 0,
+    "confirmed_duplicate_records_to_remove": 0,
+    "review_groups": 8,
+    "review_records": 16,
+    "repeated_template_groups_retained": 38,
+    "deleted": 0,
+    "decision": "No confirmed duplicates. All 2,000 activities retained; review groups left untouched."
+  },
+  "confirmed_duplicate_groups": [],
+  "review_groups": [
+    {
+      "type": "call",
+      "title": "Call",
+      "created_at": "2026-01-15 12:15:00.000000",
+      "n": 2,
+      "ids": "275,1264",
+      "records": [
+        {
+          "id": 275,
+          "type": "call",
+          "title": "Call",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": null,
+          "lead_id": null,
+          "employee_id": 167,
+          "linked_type": null,
+          "linked_id": null,
+          "created_at": "2026-01-15 12:15:00.000000",
+          "completed": 0
+        },
+        {
+          "id": 1264,
+          "type": "call",
+          "title": "Call",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": 402,
+          "lead_id": null,
+          "employee_id": 681,
+          "linked_type": "customer",
+          "linked_id": 402,
+          "created_at": "2026-01-15 12:15:00.000000",
+          "completed": 0
+        }
+      ],
+      "reason_for_review": "Same type/title/description/timestamp; relationships or employee differ."
+    },
+    {
+      "type": "task",
+      "title": "Follow-up Completed",
+      "created_at": "2025-12-12 16:30:00.000000",
+      "n": 2,
+      "ids": "1925,1928",
+      "records": [
+        {
+          "id": 1925,
+          "type": "task",
+          "title": "Follow-up Completed",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": null,
+          "lead_id": null,
+          "employee_id": 268,
+          "linked_type": null,
+          "linked_id": null,
+          "created_at": "2025-12-12 16:30:00.000000",
+          "completed": 1
+        },
+        {
+          "id": 1928,
+          "type": "task",
+          "title": "Follow-up Completed",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": 269,
+          "lead_id": null,
+          "employee_id": 299,
+          "linked_type": "customer",
+          "linked_id": 269,
+          "created_at": "2025-12-12 16:30:00.000000",
+          "completed": 1
+        }
+      ],
+      "reason_for_review": "Same type/title/description/timestamp; relationships or employee differ."
+    },
+    {
+      "type": "call",
+      "title": "Call",
+      "created_at": "2025-09-03 11:30:00.000000",
+      "n": 2,
+      "ids": "242,1266",
+      "records": [
+        {
+          "id": 242,
+          "type": "call",
+          "title": "Call",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": 98,
+          "lead_id": null,
+          "employee_id": 165,
+          "linked_type": "customer",
+          "linked_id": 98,
+          "created_at": "2025-09-03 11:30:00.000000",
+          "completed": 0
+        },
+        {
+          "id": 1266,
+          "type": "call",
+          "title": "Call",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": 104,
+          "lead_id": 64,
+          "employee_id": 94,
+          "linked_type": "lead",
+          "linked_id": 64,
+          "created_at": "2025-09-03 11:30:00.000000",
+          "completed": 0
+        }
+      ],
+      "reason_for_review": "Same type/title/description/timestamp; relationships or employee differ."
+    },
+    {
+      "type": "note",
+      "title": "Note",
+      "created_at": "2025-07-22 10:45:00.000000",
+      "n": 2,
+      "ids": "561,578",
+      "records": [
+        {
+          "id": 561,
+          "type": "note",
+          "title": "Note",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": null,
+          "lead_id": 194,
+          "employee_id": 275,
+          "linked_type": "lead",
+          "linked_id": 194,
+          "created_at": "2025-07-22 10:45:00.000000",
+          "completed": 0
+        },
+        {
+          "id": 578,
+          "type": "note",
+          "title": "Note",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": 264,
+          "lead_id": null,
+          "employee_id": 393,
+          "linked_type": "customer",
+          "linked_id": 264,
+          "created_at": "2025-07-22 10:45:00.000000",
+          "completed": 0
+        }
+      ],
+      "reason_for_review": "Same type/title/description/timestamp; relationships or employee differ."
+    },
+    {
+      "type": "email",
+      "title": "Email",
+      "created_at": "2025-03-18 13:30:00.000000",
+      "n": 2,
+      "ids": "23,1622",
+      "records": [
+        {
+          "id": 23,
+          "type": "email",
+          "title": "Email",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": null,
+          "lead_id": null,
+          "employee_id": 76,
+          "linked_type": null,
+          "linked_id": null,
+          "created_at": "2025-03-18 13:30:00.000000",
+          "completed": 0
+        },
+        {
+          "id": 1622,
+          "type": "email",
+          "title": "Email",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": 194,
+          "lead_id": null,
+          "employee_id": 452,
+          "linked_type": "customer",
+          "linked_id": 194,
+          "created_at": "2025-03-18 13:30:00.000000",
+          "completed": 0
+        }
+      ],
+      "reason_for_review": "Same type/title/description/timestamp; relationships or employee differ."
+    },
+    {
+      "type": "meeting",
+      "title": "Meeting",
+      "created_at": "2025-02-13 13:30:00.000000",
+      "n": 2,
+      "ids": "660,1426",
+      "records": [
+        {
+          "id": 660,
+          "type": "meeting",
+          "title": "Meeting",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": 455,
+          "lead_id": 83,
+          "employee_id": 262,
+          "linked_type": "lead",
+          "linked_id": 83,
+          "created_at": "2025-02-13 13:30:00.000000",
+          "completed": 0
+        },
+        {
+          "id": 1426,
+          "type": "meeting",
+          "title": "Meeting",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": 276,
+          "lead_id": null,
+          "employee_id": 501,
+          "linked_type": "customer",
+          "linked_id": 276,
+          "created_at": "2025-02-13 13:30:00.000000",
+          "completed": 0
+        }
+      ],
+      "reason_for_review": "Same type/title/description/timestamp; relationships or employee differ."
+    },
+    {
+      "type": "meeting",
+      "title": "Meeting",
+      "created_at": "2025-01-08 17:30:00.000000",
+      "n": 2,
+      "ids": "949,1013",
+      "records": [
+        {
+          "id": 949,
+          "type": "meeting",
+          "title": "Meeting",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": null,
+          "lead_id": null,
+          "employee_id": 66,
+          "linked_type": null,
+          "linked_id": null,
+          "created_at": "2025-01-08 17:30:00.000000",
+          "completed": 0
+        },
+        {
+          "id": 1013,
+          "type": "meeting",
+          "title": "Meeting",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": null,
+          "lead_id": null,
+          "employee_id": 542,
+          "linked_type": null,
+          "linked_id": null,
+          "created_at": "2025-01-08 17:30:00.000000",
+          "completed": 0
+        }
+      ],
+      "reason_for_review": "Same type/title/description/timestamp; relationships or employee differ."
+    },
+    {
+      "type": "note",
+      "title": "Lead Updated",
+      "created_at": "2025-01-03 16:00:00.000000",
+      "n": 2,
+      "ids": "115,1298",
+      "records": [
+        {
+          "id": 115,
+          "type": "note",
+          "title": "Lead Updated",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": null,
+          "lead_id": null,
+          "employee_id": 55,
+          "linked_type": null,
+          "linked_id": null,
+          "created_at": "2025-01-03 16:00:00.000000",
+          "completed": 0
+        },
+        {
+          "id": 1298,
+          "type": "note",
+          "title": "Lead Updated",
+          "description": "Synthetic activity record for CRM demonstration.",
+          "customer_id": 78,
+          "lead_id": null,
+          "employee_id": 701,
+          "linked_type": "customer",
+          "linked_id": 78,
+          "created_at": "2025-01-03 16:00:00.000000",
+          "completed": 0
+        }
+      ],
+      "reason_for_review": "Same type/title/description/timestamp; relationships or employee differ."
+    }
+  ],
+  "repeated_template_groups_retained": [
+    {
+      "type": "call",
+      "title": "Call",
+      "c": 0,
+      "l": 0,
+      "e": 92,
+      "n": 2,
+      "times": 2,
+      "ids": "1247,1499"
+    },
+    {
+      "type": "call",
+      "title": "Call",
+      "c": 0,
+      "l": 0,
+      "e": 132,
+      "n": 2,
+      "times": 2,
+      "ids": "133,577"
+    },
+    {
+      "type": "call",
+      "title": "Call",
+      "c": 0,
+      "l": 0,
+      "e": 923,
+      "n": 2,
+      "times": 2,
+      "ids": "1835,1939"
+    },
+    {
+      "type": "call",
+      "title": "Call",
+      "c": 0,
+      "l": 0,
+      "e": 973,
+      "n": 2,
+      "times": 2,
+      "ids": "1193,1823"
+    },
+    {
+      "type": "email",
+      "title": "Email",
+      "c": 0,
+      "l": 0,
+      "e": 420,
+      "n": 2,
+      "times": 2,
+      "ids": "1049,1589"
+    },
+    {
+      "type": "email",
+      "title": "Email",
+      "c": 0,
+      "l": 0,
+      "e": 659,
+      "n": 2,
+      "times": 2,
+      "ids": "1297,1789"
+    },
+    {
+      "type": "email",
+      "title": "Email",
+      "c": 0,
+      "l": 0,
+      "e": 894,
+      "n": 2,
+      "times": 2,
+      "ids": "1301,1463"
+    },
+    {
+      "type": "email",
+      "title": "Email",
+      "c": 0,
+      "l": 0,
+      "e": 983,
+      "n": 2,
+      "times": 2,
+      "ids": "107,341"
+    },
+    {
+      "type": "meeting",
+      "title": "Meeting",
+      "c": 0,
+      "l": 0,
+      "e": 51,
+      "n": 2,
+      "times": 2,
+      "ids": "601,757"
+    },
+    {
+      "type": "meeting",
+      "title": "Meeting",
+      "c": 0,
+      "l": 0,
+      "e": 507,
+      "n": 2,
+      "times": 2,
+      "ids": "1675,1979"
+    },
+    {
+      "type": "meeting",
+      "title": "Meeting",
+      "c": 0,
+      "l": 0,
+      "e": 680,
+      "n": 2,
+      "times": 2,
+      "ids": "1561,1729"
+    },
+    {
+      "type": "meeting",
+      "title": "Meeting",
+      "c": 0,
+      "l": 0,
+      "e": 734,
+      "n": 2,
+      "times": 2,
+      "ids": "1429,1573"
+    },
+    {
+      "type": "meeting",
+      "title": "Meeting",
+      "c": 0,
+      "l": 0,
+      "e": 807,
+      "n": 3,
+      "times": 3,
+      "ids": "61,559,899"
+    },
+    {
+      "type": "meeting",
+      "title": "Meeting",
+      "c": 0,
+      "l": 0,
+      "e": 976,
+      "n": 2,
+      "times": 2,
+      "ids": "535,817"
+    },
+    {
+      "type": "note",
+      "title": "Deal Stage Changed",
+      "c": 0,
+      "l": 0,
+      "e": 152,
+      "n": 2,
+      "times": 2,
+      "ids": "59,137"
+    },
+    {
+      "type": "note",
+      "title": "Deal Stage Changed",
+      "c": 0,
+      "l": 0,
+      "e": 295,
+      "n": 2,
+      "times": 2,
+      "ids": "613,697"
+    },
+    {
+      "type": "note",
+      "title": "Deal Stage Changed",
+      "c": 0,
+      "l": 0,
+      "e": 453,
+      "n": 3,
+      "times": 3,
+      "ids": "923,1775,1999"
+    },
+    {
+      "type": "note",
+      "title": "Deal Stage Changed",
+      "c": 0,
+      "l": 0,
+      "e": 553,
+      "n": 3,
+      "times": 3,
+      "ids": "419,1477,1547"
+    },
+    {
+      "type": "note",
+      "title": "Deal Stage Changed",
+      "c": 0,
+      "l": 0,
+      "e": 681,
+      "n": 2,
+      "times": 2,
+      "ids": "151,1933"
+    },
+    {
+      "type": "note",
+      "title": "Lead Updated",
+      "c": 0,
+      "l": 0,
+      "e": 206,
+      "n": 2,
+      "times": 2,
+      "ids": "1387,1637"
+    },
+    {
+      "type": "note",
+      "title": "Lead Updated",
+      "c": 0,
+      "l": 0,
+      "e": 477,
+      "n": 2,
+      "times": 2,
+      "ids": "1003,1333"
+    },
+    {
+      "type": "note",
+      "title": "Lead Updated",
+      "c": 0,
+      "l": 0,
+      "e": 852,
+      "n": 2,
+      "times": 2,
+      "ids": "1315,1565"
+    },
+    {
+      "type": "note",
+      "title": "Note",
+      "c": 0,
+      "l": 0,
+      "e": 79,
+      "n": 2,
+      "times": 2,
+      "ids": "1069,1613"
+    },
+    {
+      "type": "note",
+      "title": "Note",
+      "c": 0,
+      "l": 0,
+      "e": 198,
+      "n": 2,
+      "times": 2,
+      "ids": "295,589"
+    },
+    {
+      "type": "note",
+      "title": "Note",
+      "c": 0,
+      "l": 0,
+      "e": 402,
+      "n": 2,
+      "times": 2,
+      "ids": "217,521"
+    },
+    {
+      "type": "note",
+      "title": "Note",
+      "c": 0,
+      "l": 0,
+      "e": 425,
+      "n": 2,
+      "times": 2,
+      "ids": "865,1831"
+    },
+    {
+      "type": "note",
+      "title": "Note",
+      "c": 0,
+      "l": 0,
+      "e": 601,
+      "n": 2,
+      "times": 2,
+      "ids": "1133,1375"
+    },
+    {
+      "type": "note",
+      "title": "Note",
+      "c": 0,
+      "l": 0,
+      "e": 604,
+      "n": 2,
+      "times": 2,
+      "ids": "1417,1783"
+    },
+    {
+      "type": "note",
+      "title": "Note",
+      "c": 0,
+      "l": 0,
+      "e": 818,
+      "n": 2,
+      "times": 2,
+      "ids": "365,1649"
+    },
+    {
+      "type": "task",
+      "title": "Follow-up Completed",
+      "c": 0,
+      "l": 0,
+      "e": 263,
+      "n": 2,
+      "times": 2,
+      "ids": "1217,1807"
+    },
+    {
+      "type": "task",
+      "title": "Follow-up Completed",
+      "c": 0,
+      "l": 0,
+      "e": 627,
+      "n": 2,
+      "times": 2,
+      "ids": "211,1007"
+    },
+    {
+      "type": "task",
+      "title": "Follow-up Completed",
+      "c": 0,
+      "l": 0,
+      "e": 687,
+      "n": 2,
+      "times": 2,
+      "ids": "65,283"
+    },
+    {
+      "type": "task",
+      "title": "Follow-up Completed",
+      "c": 0,
+      "l": 0,
+      "e": 969,
+      "n": 2,
+      "times": 2,
+      "ids": "5,661"
+    },
+    {
+      "type": "task",
+      "title": "Task Completed",
+      "c": 0,
+      "l": 0,
+      "e": 72,
+      "n": 2,
+      "times": 2,
+      "ids": "653,671"
+    },
+    {
+      "type": "task",
+      "title": "Task Completed",
+      "c": 0,
+      "l": 0,
+      "e": 433,
+      "n": 2,
+      "times": 2,
+      "ids": "575,665"
+    },
+    {
+      "type": "task",
+      "title": "Task Completed",
+      "c": 0,
+      "l": 0,
+      "e": 452,
+      "n": 2,
+      "times": 2,
+      "ids": "733,1451"
+    },
+    {
+      "type": "task",
+      "title": "Task Completed",
+      "c": 0,
+      "l": 0,
+      "e": 537,
+      "n": 2,
+      "times": 2,
+      "ids": "403,1403"
+    },
+    {
+      "type": "task",
+      "title": "Task Completed",
+      "c": 0,
+      "l": 0,
+      "e": 891,
+      "n": 2,
+      "times": 2,
+      "ids": "1711,1967"
+    }
+  ]
+}

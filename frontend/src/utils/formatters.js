@@ -2,18 +2,39 @@
  * Utility formatters shared across the app.
  */
 
+const inrFormatter = new Intl.NumberFormat("en-IN", {
+  style: "currency",
+  currency: "INR",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+const inrCompactFormatter = new Intl.NumberFormat("en-IN", {
+  style: "currency",
+  currency: "INR",
+  notation: "compact",
+  maximumFractionDigits: 1,
+});
+
 /**
- * Format a number as USD currency.
+ * Format a number as Indian Rupees using Indian digit grouping.
+ * Display only — stored numeric values are never converted.
  * @param {number} value
- * @returns {string}  e.g. "$12,500.00"
+ * @returns {string}  e.g. "₹12,500.00"
  */
 export function formatCurrency(value) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(value ?? 0);
+  const numeric = Number(value);
+  return inrFormatter.format(Number.isFinite(numeric) ? numeric : 0);
+}
+
+/**
+ * Short INR label for chart axes/tooltips.
+ * @param {number} value
+ * @returns {string}  e.g. "₹1.2L"
+ */
+export function formatCompactCurrency(value) {
+  const numeric = Number(value);
+  return inrCompactFormatter.format(Number.isFinite(numeric) ? numeric : 0);
 }
 
 /**

@@ -19,6 +19,12 @@ class Employee(db.Model):
     department = db.Column(db.String(80), nullable=True)
     designation = db.Column(db.String(120), nullable=True)
     manager_employee_id = db.Column(db.String(40), nullable=True, index=True)
+    department_id = db.Column(
+        db.Integer, db.ForeignKey("departments.id"), nullable=True, index=True
+    )
+    role_label = db.Column(db.String(20), nullable=True)  # manager | sales | employee
+    joining_date = db.Column(db.Date, nullable=True)
+    location = db.Column(db.String(120), nullable=True)
     status = db.Column(db.String(20), default="active")  # active | inactive
     import_batch = db.Column(db.String(40), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -32,7 +38,11 @@ class Employee(db.Model):
             "email": self.email,
             "phone": self.phone,
             "department": self.department,
+            "department_id": self.department_id,
             "designation": self.designation,
+            "role_label": self.role_label,
+            "joining_date": self.joining_date.isoformat() if self.joining_date else None,
+            "location": self.location,
             "manager_employee_id": self.manager_employee_id,
             "status": self.status,
             "import_batch": self.import_batch,

@@ -1,0 +1,28 @@
+﻿# Render Blueprint for SmartCRM Backend
+# Deploys the Flask API as a web service on Render
+# Auto-deploys from GitHub on every push
+
+services:
+  - type: web
+    name: smartcrm-api
+    runtime: python
+    plan: free
+    # Build from the backend/ subdirectory
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    # Gunicorn production server
+    startCommand: gunicorn app:app --config gunicorn_config.py
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        # SQLite for free tier; use PostgreSQL for production
+        value: sqlite:///smartcrm.db
+      - key: PYTHON_VERSION
+        value: 3.12.0

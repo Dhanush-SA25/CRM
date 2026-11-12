@@ -40,7 +40,13 @@ import TargetPanel from "../components/dashboard/TargetPanel";
 import ConversionFunnel from "../components/dashboard/ConversionFunnel";
 import LostReasonsChart from "../components/dashboard/LostReasonsChart";
 import EmployeePerformanceTable from "../components/dashboard/EmployeePerformanceTable";
-import { DEAL_STAGE_LABELS, formatCurrency, capitalize, timeAgo } from "../utils/formatters";
+import {
+  DEAL_STAGE_LABELS,
+  formatCurrency,
+  formatCompactCurrency,
+  capitalize,
+  timeAgo,
+} from "../utils/formatters";
 
 // Graphite ramp keeps the charts inside the gray/white identity.
 const STAGE_COLORS = ["#111827", "#1f2937", "#374151", "#4b5563", "#6b7280", "#9ca3af", "#d1d5db"];
@@ -107,7 +113,7 @@ function PipelineBarChart({ data }) {
           tick={{ fontSize: 11, fill: "#94a3b8" }}
           axisLine={false}
           tickLine={false}
-          tickFormatter={(v) => (v >= 1000 ? `$${Math.round(v / 1000)}k` : `$${v}`)}
+          tickFormatter={formatCompactCurrency}
         />
         <Tooltip
           cursor={{ fill: "rgba(17,24,39,0.04)" }}
