@@ -13,7 +13,7 @@
 # can call the API same-origin without CORS issues.
 [[redirects]]
   from = "/api/*"
-  to = "https://smartcrm-api.onrender.com/api/:splat"
+  to = "https://smartcrm-api-3vfb.onrender.com/api/:splat"
   status = 200
   force = true
 
