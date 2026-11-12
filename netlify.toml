@@ -1,44 +1,10 @@
-﻿# ── SmartCRM Netlify Configuration ─────────────────────────────────────
-# Frontend build + deploy configuration for Netlify
-# Connected to GitHub repo: https://github.com/Dhanush-SA25/CRM.git
-
+﻿
 [build]
-  # The frontend lives in the frontend/ subdirectory
-  base = "frontend/"
-  # Use npm install (not npm ci) — more tolerant of lock-file version mismatches
-  command = "npm install && npm run build"
-  publish = "dist/"
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
 
-[build.environment]
-  # Node version for the build environment
-  NODE_VERSION = "20"
-  # Leave empty → frontend defaults to "/api" → proxied via redirect below
-  VITE_API_BASE_URL = ""
-
-# ── SPA Redirect (fixes white-screen / page-not-found on refresh) ─────
-# All non-asset routes fall back to index.html so React Router handles them
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-# ── API Proxy ──────────────────────────────────────────────────────────
-# Proxies /api/* requests from the Netlify frontend to the Render backend.
-# This keeps API calls same-origin (no CORS issues).
-#
-# Replace the URL below with your actual Render backend URL.
-# The :splat placeholder passes the path through (e.g. /api/auth/login → /api/auth/login)
-[[redirects]]
-  from = "/api/*"
-  to = "https://smartcrm-api.onrender.com/api/:splat"
-  status = 200
-  force = true
-
-# ── Security headers ──────────────────────────────────────────────────
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
