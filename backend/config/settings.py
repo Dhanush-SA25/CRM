@@ -136,6 +136,12 @@ class ProductionConfig(Config):
     """Production — requires DATABASE_URL pointing to PostgreSQL."""
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = "sqlite:///smartcrm.db"
+    SQLALCHEMY_ENGINE_OPTIONS = {
+        "pool_pre_ping": True,          # Verify connections before reuse
+        "pool_recycle": 300,            # Recycle connections after 5 minutes
+        "pool_size": 2,                 # Base pool size per worker
+        "max_overflow": 3,              # Additional temporary connections per worker
+    }
 
 
 class TestingConfig(Config):
