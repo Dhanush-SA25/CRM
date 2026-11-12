@@ -52,15 +52,48 @@ export default function LoginPage() {
       setSuccess(true);
       setTimeout(() => navigate("/dashboard"), 900);
     } catch (err) {
+      // No response at all — network failure or Render service is sleeping
       if (!err.response) {
         setError(
-          "Cannot reach the API at http://localhost:5000. Start the backend, then try again."
+          "Cannot reach the server. The API may be starting up — please wait 30 seconds and try again."
         );
-      } else if (err.response.status === 429) {
-        setError("Too many attempts. Please wait a moment and try again.");
-      } else {
-        setError(err.response.data?.error || "Invalid email or password");
+        return;
       }
+
+      const { status, data } = err.response;
+      // Detect when the proxy returned an HTML page instead of JSON
+      // (happens when the Netlify → Render redirect is misconfigured)
+      const isHtmlResponse =
+        typeof data === "string" && data.trimStart().startsWith("<");
+
+      if (isHtmlResponse) {
+        setError(
+          "The login request did not reach the API server. " +
+          "If this persists, please contact your administrator."
+        );
+        return;
+      }
+
+      // Real backend responses
+      if (status === 401 || status === 403) {
+        setError("Invalid email or password.");
+        return;
+      }
+
+      if (status === 429) {
+        setError("Too many attempts. Please wait a moment and try again.");
+        return;
+      }
+
+      if (status >= 500) {
+        setError("The server encountered an error. Please try again shortly.");
+        return;
+      }
+
+      // Any other backend error — show the message if it's a safe string
+      const backendMessage =
+        typeof data?.error === "string" ? data.error : null;
+      setError(backendMessage || "Login failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -94,9 +127,10 @@ export default function LoginPage() {
         <div className="mb-4 flex items-start gap-2.5 rounded-xl border border-amber-200 bg-amber-50 px-3.5 py-3 text-sm text-amber-800">
           <WifiOff size={16} className="mt-0.5 flex-shrink-0" />
           <span>
-            Backend is not reachable at{" "}
-            <span className="font-mono text-[12px]">http://localhost:5000</span>. Start it
+            Backend is not reachable. If you are running locally, start it
             with <span className="font-mono text-[12px]">npm run dev:backend</span>.
+            If this is the live site, the API server may be starting up — please
+            wait 30 seconds and refresh.
           </span>
         </div>
       )}
@@ -269,9 +303,9 @@ export default function LoginPage() {
           ].join(" ")}
         />
         {status === "online"
-          ? "API connected · localhost:5000"
+          ? "API connected"
           : status === "offline"
-            ? "API offline · localhost:5000"
+            ? "API offline · check server status"
             : "Checking API connection…"}
       </div>
     </AuthShell>

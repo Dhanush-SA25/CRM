@@ -1,8 +1,23 @@
 [build]
   base = "frontend"
-  command = "npm run build"
+  command = "npm install && npm run build"
   publish = "dist"
 
+[build.environment]
+  NODE_VERSION = "20"
+  VITE_API_BASE_URL = ""
+
+# ── API Proxy (MUST come before the SPA catch-all) ─────────────────────
+# Netlify processes redirects top-to-bottom; first match wins.
+# This forwards /api/* to the Render Flask backend so the frontend
+# can call the API same-origin without CORS issues.
+[[redirects]]
+  from = "/api/*"
+  to = "https://smartcrm-api.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# ── SPA Redirect (catch-all for client-side routing) ───────────────────
 [[redirects]]
   from = "/*"
   to = "/index.html"

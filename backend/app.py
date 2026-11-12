@@ -1,6 +1,8 @@
 """
 SmartCRM -- Flask application factory.
 """
+import os
+
 import click
 from flask import Flask, jsonify
 from flask_cors import CORS
@@ -113,6 +115,42 @@ def create_app(config_class=None):
         if click.confirm("This will delete ALL data. Are you sure?"):
             db.drop_all()
             click.echo("All tables dropped.")
+
+    @app.cli.command("create-admin")
+    def create_admin():
+        """Create the first admin user from environment variables.
+
+        Reads ADMIN_EMAIL and ADMIN_PASSWORD from the environment.
+        If a user with that email already exists the command is a no-op
+        (no duplicate, no password overwrite).
+
+        Usage on Render:
+          ADMIN_EMAIL=admin@example.com ADMIN_PASSWORD=your-secret \\
+          flask create-admin
+        """
+        from models.user import User
+
+        email = os.getenv("ADMIN_EMAIL", "").strip().lower()
+        password = os.getenv("ADMIN_PASSWORD", "")
+
+        if not email or not password:
+            click.echo(
+                "ADMIN_EMAIL and ADMIN_PASSWORD environment variables are required.\n"
+                "Example:\n"
+                "  ADMIN_EMAIL=admin@example.com ADMIN_PASSWORD=secret flask create-admin"
+            )
+            return
+
+        existing = User.query.filter_by(email=email).first()
+        if existing:
+            click.echo(f"User '{email}' already exists (role={existing.role}). Skipping — no changes made.")
+            return
+
+        admin = User(name="Administrator", email=email, role="admin")
+        admin.set_password(password)
+        db.session.add(admin)
+        db.session.commit()
+        click.echo(f"Admin user '{email}' created successfully.")
 
     # Create tables / apply additive column upgrades for existing databases.
     ensure_schema(app)
